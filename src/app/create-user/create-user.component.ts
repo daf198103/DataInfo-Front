@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-user',
@@ -12,7 +13,7 @@ export class CreateUserComponent implements OnInit {
   user: User = new User();
   submitted = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private http: HttpClient) { }
 
   ngOnInit() {
   }

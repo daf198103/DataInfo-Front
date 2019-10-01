@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,12 +14,14 @@ import { UserListComponent } from './user-list/user-list.component';
     CreateUserComponent,
     UserDetailsComponent,
     UserListComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule 
   ],
-  providers: [],
+  providers: [CreateUserComponent,UserDetailsComponent,UserListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
