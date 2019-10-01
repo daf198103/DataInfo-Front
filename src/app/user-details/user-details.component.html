@@ -1,0 +1,31 @@
+<div *ngIf="user">
+    <div>
+        <label>Nome: </label> {{user.userName}}
+    </div>
+    <div>
+        <label>CPF: </label> {{user.cpf}}
+    </div>
+    <div>
+        <label>Função: </label> {{user.function}}
+    </div>
+    <div>
+        <label>Email: </label> {{user.email}}
+    </div>
+    <div>
+        <label>Situação: </label> {{user.situation}}
+    </div>
+    <div>
+        <label>Perfil Acesso: </label> {{user.accessProfile}}
+    </div>
+    <div>
+        <label>Telefone: </label> {{user.phone}}
+    </div>
+
+    <span class="button is-small btn-primary" *ngIf='user.situation' (click)='updateSituation(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!user.situation' (click)='updateSituation(true)'>Active</span>
+
+    <span class="button is-small btn-danger" (click)='deleteUser()'>Delete</span>
+
+    <hr/>
+</div>
