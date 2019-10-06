@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserPorCpfComponent } from './user-por-cpf/user-por-cpf.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UserPorCpfComponent } from './user-por-cpf/user-por-cpf.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxPaginationModule
 
   ],
   providers: [CreateUserComponent,UserDetailsComponent,UserListComponent],

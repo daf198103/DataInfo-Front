@@ -12,11 +12,14 @@ export class UserListComponent implements OnInit {
   
   //user: Promise<User[]>;
 
-  
+  p: number = 1;
+  delete = false;
+
   user: Array<User> = new Array<User>();
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.delete = false;
     this.reloadData();
   }
 
@@ -33,6 +36,7 @@ export class UserListComponent implements OnInit {
         data => {
           console.log(data);
           this.reloadData();
+          this.delete = true;
         },
         error => console.log(error));
   }
