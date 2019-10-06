@@ -13,18 +13,23 @@
                     <th>Situação</th>
                     <th>Perfil Acesso</th>
                     <th>Telefone</th>
+                    <th>Deletar</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of user | async">
-                    <td>{{user.userName}}</td>
-                    <td>{{user.cpf}}</td>
-                    <td>{{user.function}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.situation}}</td>
-                    <td>{{user.accessProfile}}</td>
-                    <td>{{user.phone}}</td>
-                    <td><button (click)="deleteEmployee(user.cpf)">Delete</button></td>
+                <tr *ngFor="let x of user">
+                    <td>{{x.userName}}</td>
+                    <td>{{x.cpf}}</td>
+                    <td>{{x.function}}</td>
+                    <td>{{x.email}}</td>
+                    <td>{{x.situation=='I'?'Inativo':'Ativo'}}</td>
+                    <td>{{x.accessProfile}}</td>
+                    <td>{{x.phone}}</td>
+                    <td><button class="btn btn-danger"(click)="deleteUser(x.cpf)"><i class="fa fa-trash" aria-hidden="true"></i>
+                    </button></td>
+                    <td><button class="btn btn-primary" routerLink="details/{{x.cpf}}" routerLinkActive="active"><i class="fa fa-wrench" aria-hidden="true"></i>
+                    </button></td>
                 </tr>
             </tbody>
         </table>

@@ -7,19 +7,27 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserPorCpfComponent } from './user-por-cpf/user-por-cpf.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateUserComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    UserPorCpfComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
+
   ],
   providers: [CreateUserComponent,UserDetailsComponent,UserListComponent],
   bootstrap: [AppComponent]

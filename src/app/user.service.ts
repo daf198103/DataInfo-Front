@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +11,56 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  private baseUrl = '/data';
+  private baseUrl = 'http://localhost:8082';
 
-  getUser(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getAll(): Promise<any>{
+    var reqHeader = new HttpHeaders({       
+      'Content-Type': 'application/json'
+        });
+  return this.http.get(`${this.baseUrl}/data/api/getAll`, { headers: reqHeader })
+  .toPromise()
+  .then( resposta => resposta);
   }
 
-  createUser(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, user);
+  getUserByCpf(id: number):Promise<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get(`${this.baseUrl}/data/api/bycpf/${id}`,{headers:reqHeader})
+    .toPromise()
+    .then(resposta=>resposta);
   }
 
-  updateUser(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+  createUser(user: Object): Promise<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.baseUrl}/data/api/create/save`,user,{headers:reqHeader })
+    .toPromise()
+    .then(resposta=>resposta);
   }
 
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  updateUser(user:Object): Promise<any>{
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`${this.baseUrl}/data/api/update/save`,user,{headers:reqHeader})
+    .toPromise()
+    .then(resposta=>resposta);
   }
 
-  getUserList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+
+  deleteUser(id: number): Promise<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete(`${this.baseUrl}/data/api/delete/${id}`, {headers:reqHeader})
+    .toPromise()
+    .then();
   }
+
+ /*  getUserList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/data/api/getAll`);
+  } */
   
 }

@@ -9,8 +9,11 @@ import { User } from '../user';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  user: Observable<User[]>;
+  
+  //user: Promise<User[]>;
 
+  
+  user: Array<User> = new Array<User>();
   constructor(private userService: UserService) {}
 
   ngOnInit() {
@@ -18,12 +21,15 @@ export class UserListComponent implements OnInit {
   }
 
   reloadData() {
-    this.user = this.userService.getUserList();
+  this.userService.getAll()
+  .then((resposta)=>{
+    this.user = resposta;
+  })
   }
 
-  deleteEmployee(id: number) {
+  deleteUser(id: number) {
     this.userService.deleteUser(id)
-      .subscribe(
+      .then(
         data => {
           console.log(data);
           this.reloadData();
