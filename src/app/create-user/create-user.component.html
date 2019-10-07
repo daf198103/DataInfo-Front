@@ -30,16 +30,32 @@
             <label >Situação</label>
             <input type="text" class="form-control" id="situation" required  formControlName="situation"name="situation">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label >Perfil Acesso</label>
             <input type="text" class="form-control" id="accessProfile" required formControlName="accessProfile" name="accessProfile">
+        </div> -->
+        <label for="nomeL">Perfil Acesso:</label>
+        <div class="form-group">
+            <select class="custom-select" id="situacao" formControlName="accessProfile">
+              <option selected>Escolha Perfil</option>
+              <option value="1">1 - Todos</option>
+              <option value="2">2 - Gestor Nacional</option>
+              <option value="3">3 - Gestor Estadual</option>
+              <option value="4">4 - Gestor Municipal</option>
+            </select> 
         </div>
+
+
+
+
+
+
         <div class="form-group">
             <label >Telefone</label>
             <input type="text" class="form-control" id="phone" required formControlName="phone" name="phone">
         </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </form>
 </div>
 

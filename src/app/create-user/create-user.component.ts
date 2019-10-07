@@ -34,7 +34,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
     this.user.userName = this.usuario.value.userName;
     this.user.cpf = this.usuario.value.cpf;
     this.user.email = this.usuario.value.email;
@@ -43,12 +42,30 @@ export class CreateUserComponent implements OnInit {
     this.user.situation = this.usuario.value.situation;
     this.user.accessProfile = this.usuario.value.accessProfile;
     console.log(this.user.userName);
+    
     this.userService.createUser(this.user)
-    this.submitted = true;
+    .then((resposta)=>{
+      if(resposta == null){
+        alert("Usuário já cadastrado!");
+        this.fechar();
+      }
+      else
+      {
+        this.submitted = true;
+      }
+
+    });
+
+    
     
   }
   
   fechar(){
     window.location.replace("user-list");
   }
+
+  
+    
+
+  
 }
